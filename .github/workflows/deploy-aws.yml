@@ -13,7 +13,7 @@ jobs:
     
       - name: build docker image
         run: |
-             docker build -t  8753/docker-react:latest -f Dockerfile.dev .   
+             docker build -t  8753/docker-react:latest -f Dockerfile .   
       - name: Docker Login
         uses: docker/login-action@v1.8.0
         with:
@@ -50,8 +50,8 @@ jobs:
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v21
       with:
-        application_name: reactdocker
-        environment_name: Reactdocker-env 
+        application_name: dockerreact
+        environment_name:  
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}       
         version_label: "app-${{ steps.format-time.outputs.replaced }}"
